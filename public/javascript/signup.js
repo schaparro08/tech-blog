@@ -6,6 +6,9 @@ const signupFormHandler = async function(event) {
   
     const response = await fetch('/api/user', {
          // Create the functionality to help create the buttons for your website.
+         method: "POST",
+         body: JSON.stringify({ usernameEl, passwordEl }),
+         headers: { "Content-Type": "application/json" },
 
     });
   
