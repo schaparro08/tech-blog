@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, User } = require("../models");
+const {Post} = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, async (req, res) => {
@@ -7,7 +7,6 @@ router.get("/", withAuth, async (req, res) => {
    try {
        const postData = await Post.findAll({
            where: { user_id: req.session.user_id },
-           include: User,
        });
        const posts = postData.map((project) => project.get({plan: true}));
        res.render('posts', {posts,layout:'dashboard.handlebars'});
