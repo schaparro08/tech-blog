@@ -5,13 +5,13 @@ router.get("/", async (req, res) => {
     // get all posts for the homepage
     try {
         const postsData = await Post.findAll({
+          include: [User], 
 
         });
-        const post = postsData.get({ plain: true });
+        const post = postsData.map((post) => post.get({ plain: true }));
     
         res.render('posts', {
-          post,
-          logged_in: req.session.logged_in
+          post
         });
       } catch (err) {
         res.status(500).json(err);

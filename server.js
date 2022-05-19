@@ -12,12 +12,12 @@ const helpers = require('./utils/helper')
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-const sequelize = require("./config/config");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const sequelize = require('./config/config');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
     // For password sessions
-    secret: "super secret secret",
+    secret: 'super secret secret',
     cookie: {},
     resave: false,
     saveUninitialized: true,
@@ -31,8 +31,8 @@ app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
 
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
