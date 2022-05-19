@@ -1,6 +1,6 @@
 // Finish the rest of this model
 const sequelize = require('../config/config');
-const {Model, DataTypes} = require('sequelize');
+const {Model, DataTypes, Sequelize} = require('sequelize');
 
 class Post extends Model {}
 Post.init(
@@ -9,11 +9,8 @@ Post.init(
         content: DataTypes.STRING,
     },
     {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'user',
+        sequelize
+        
     }
 )
 
